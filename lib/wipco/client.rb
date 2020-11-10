@@ -5,7 +5,7 @@ require "wipco"
 require "wipco/auth"
 require "byebug"
 class Wipco::Client
-  API_ENDPOINT = "https://wip.chat/graphql"
+  API_ENDPOINT = "https://wip.co/graphql"
 
   attr_reader :api_key, :json, :response
 
