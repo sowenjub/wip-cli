@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "wipco"
+require "wipco/cli"
+
+Wipco::CLI.start(ARGV)
