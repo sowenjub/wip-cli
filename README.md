@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+Define an ENV var named `WIPCO_API_KEY` with your [api key](https://wip.co/api).
+
 `wipco todo "Grab a cup of ☕️"`
 
 `wipco complete 123`
