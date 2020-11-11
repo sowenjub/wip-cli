@@ -1,3 +1,5 @@
+require "wip/todo"
+require "wip/user"
 require "wip/version"
 
 module Wip
