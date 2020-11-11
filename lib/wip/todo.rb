@@ -6,15 +6,19 @@ class Wip::Todo
   attr_accessor :id, :body, :completed_at
   attr_reader :client
 
+  def self.default_selection
+    %{
+      id
+      body
+      completed_at
+    }
+  end
+
   def self.find(id)
     client = Wip::Client.new
     find_query = %{
       {
-        todo(id: \"#{id}\") {
-          id
-          body
-          completed_at
-        }
+        todo(id: \"#{id}\") {#{default_selection}}
       }
     }
     client.request find_query

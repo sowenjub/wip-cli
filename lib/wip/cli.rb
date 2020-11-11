@@ -23,4 +23,12 @@ class Wip::CLI < Thor
     todo = Wip::Todo.create(body: body)
     puts todo.description
   end
+
+  desc "todos", "List viewer todos"
+  def todos
+    user = Wip::User.viewer
+    user.todos.each do |todo|
+      puts todo.description
+    end
+  end
 end

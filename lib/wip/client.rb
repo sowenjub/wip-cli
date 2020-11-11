@@ -3,7 +3,7 @@ require "uri"
 require "json"
 require "wip"
 require "wip/auth"
-require "byebug"
+
 class Wip::Client
   API_ENDPOINT = "https://wip.co/graphql"
 

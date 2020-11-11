@@ -4,7 +4,8 @@
 
 ### Added
 
-- Added method to get viewer: Wip::User.viewer
+- Added command to get viewer todos: `wip todos`
+- Added method to get viewer: `Wip::User.viewer`
 
 ## [1.1.0] - 2020-11-11
 
