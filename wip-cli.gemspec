@@ -1,19 +1,19 @@
-require_relative 'lib/wipco/version'
+require_relative 'lib/wip/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "wipco"
-  spec.version       = Wipco::VERSION
+  spec.name          = "wip-cli"
+  spec.version       = Wip::VERSION
   spec.authors       = ["Arnaud Joubay"]
 
   spec.summary       = %q{A CLI for wip.co}
   spec.description   = %q{A simple gem to manage wip.co todos from the command line.}
-  spec.homepage      = "https://github.com/sowenjub/wipco"
+  spec.homepage      = "https://github.com/sowenjub/wip-cli"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/sowenjub/wipco"
-  spec.metadata["changelog_uri"] = "https://github.com/sowenjub/ynap/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/sowenjub/wip-cli"
+  spec.metadata["changelog_uri"] = "https://github.com/sowenjub/wip-cli/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "wipco"
+require "wip"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

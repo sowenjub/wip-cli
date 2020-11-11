@@ -1,26 +1,26 @@
 require "date"
 require "thor"
-require "wipco"
-require "wipco/todo"
+require "wip"
+require "wip/todo"
 
-class Wipco::CLI < Thor
+class Wip::CLI < Thor
   class_option :verbose, :type => :boolean, :aliases => "-v"
 
   desc "complete [ID]", "Mark a todo as completed"
   def complete(todo_id)
-    todo = Wipco::Todo.complete(todo_id)
+    todo = Wip::Todo.complete(todo_id)
     puts todo.description
   end
 
   desc "done [BODY]", "Create a new todo and immediately mark it as completed"
   def done(body)
-    todo = Wipco::Todo.create(body: body, completed_at: DateTime.now)
+    todo = Wip::Todo.create(body: body, completed_at: DateTime.now)
     puts todo.description
   end
 
   desc "todo [BODY]", "Create a new todo"
   def todo(body)
-    todo = Wipco::Todo.create(body: body)
+    todo = Wip::Todo.create(body: body)
     puts todo.description
   end
 end

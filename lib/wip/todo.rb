@@ -1,13 +1,13 @@
 require "date"
-require "wipco"
-require "wipco/client"
+require "wip"
+require "wip/client"
 
-class Wipco::Todo
+class Wip::Todo
   attr_accessor :id, :body, :completed_at
   attr_reader :client
 
   def self.find(id)
-    client = Wipco::Client.new
+    client = Wip::Client.new
     find_query = %{
       {
         todo(id: \"#{id}\") {
@@ -46,7 +46,7 @@ class Wipco::Todo
 
 
   def client
-    @client ||= Wipco::Client.new
+    @client ||= Wip::Client.new
   end
 
   def description

@@ -1,4 +1,4 @@
-# Wipco
+# Wip-CLI
 
 A ruby CLI to interact with wip.co from your terminal.
 
@@ -7,7 +7,7 @@ A ruby CLI to interact with wip.co from your terminal.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'wipco'
+gem 'wip-cli'
 ```
 
 And then execute:
@@ -16,17 +16,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install wipco
+    $ gem install wip-cli
 
 ## Usage
 
-Define an ENV var named `WIPCO_API_KEY` with your [api key](https://wip.co/api).
+Define an ENV var named `WIP_API_KEY` with your [api key](https://wip.co/api).
 
-`wipco todo "Grab a cup of ☕️"`
+`wip todo "Grab a cup of ☕️"`
 
-`wipco complete 123`
+`wip complete 123`
 
-`wipco done "Installed wipco gem"`
+`wip done "Installed wip-cli gem"`
 
 ## Development
 
@@ -36,7 +36,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/sowenjub/wipco.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sowenjub/wip-cli.
 
 
 ## License

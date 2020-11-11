@@ -1,6 +1,6 @@
-require "wipco/version"
+require "wip/version"
 
-module Wipco
+module Wip
   class Error < StandardError; end
   # Your code goes here...
 end

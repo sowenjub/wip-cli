@@ -1,6 +1,6 @@
-RSpec.describe Wipco do
+RSpec.describe Wip do
   it "has a version number" do
-    expect(Wipco::VERSION).not_to be nil
+    expect(Wip::VERSION).not_to be nil
   end
 
   it "does something useful" do

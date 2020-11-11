@@ -1,15 +1,15 @@
 require "net/http"
 require "uri"
 require "json"
-require "wipco"
-require "wipco/auth"
+require "wip"
+require "wip/auth"
 require "byebug"
-class Wipco::Client
+class Wip::Client
   API_ENDPOINT = "https://wip.co/graphql"
 
   attr_reader :api_key, :json, :response
 
-  def initialize(api_key: Wipco::Auth.api_key)
+  def initialize(api_key: Wip::Auth.api_key)
     @api_key = api_key
   end
 
