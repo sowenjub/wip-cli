@@ -7,14 +7,21 @@ class Wip::CLI < Thor
   class_option :verbose, :type => :boolean, :aliases => "-v"
 
   desc "complete [ID]", "Mark a todo as completed"
+  method_option :undo, type: :boolean, aliases: '-u'
   def complete(todo_id)
-    todo = Wip::Todo.complete(todo_id)
+    todo = options.undo ? Wip::Todo.uncomplete(todo_id) : Wip::Todo.complete(todo_id)
     puts todo.description
   end
 
   desc "done [BODY]", "Create a new todo and immediately mark it as completed"
   def done(body)
     todo = Wip::Todo.create(body: body, completed_at: DateTime.now)
+    puts todo.description
+  end
+
+  desc "delete [ID]", "Delete a todo"
+  def delete(todo_id)
+    todo = Wip::Todo.delete(todo_id)
     puts todo.description
   end
 

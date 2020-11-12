@@ -7,6 +7,7 @@ class Wip::Todo
   ATTRIBUTES = %i(id body completed_at)
 
   attr_accessor *ATTRIBUTES
+  attr_accessor :deleted
   attr_reader :client
 
   def self.collection_query(**args)
@@ -45,6 +46,18 @@ class Wip::Todo
     todo
   end
 
+  def self.uncomplete(id)
+    todo = find id
+    todo.uncomplete
+    todo
+  end
+
+  def self.delete(id)
+    todo = find id
+    todo.delete
+    todo
+  end
+
 
   def initialize(id: nil, body: nil, completed_at: nil)
     @id = id
@@ -66,7 +79,7 @@ class Wip::Todo
   end
 
   def icon
-    done? ? "✅" : "🚧"
+    deleted ? "🗑" : (done? ? "✅" : "🚧")
   end
 
   def complete
@@ -76,11 +89,23 @@ class Wip::Todo
     end
   end
 
+  def uncomplete
+    client.request uncomplete_query
+    client.data("uncompleteTodo").tap do |params|
+      @completed_at = nil
+    end
+  end
+
   def save
     client.request create_query
     client.data("createTodo").tap do |params|
       @id = params["id"]&.to_i
     end
+  end
+
+  def delete
+    client.request delete_query
+    @deleted = !client.data("deleteTodo").nil?
   end
 
   private
@@ -96,10 +121,30 @@ class Wip::Todo
       }
     end
 
+    def delete_query
+      %{
+        mutation deleteTodo {
+          deleteTodo(id: #{id})
+        }
+      }
+    end
+
     def complete_query
       %{
         mutation completeTodo {
           completeTodo(id: #{id}) {
+            id
+            body
+            completed_at
+          }
+        }
+      }
+    end
+
+    def uncomplete_query
+      %{
+        mutation uncompleteTodo {
+          uncompleteTodo(id: #{id}) {
             id
             body
             completed_at
