@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wip-cli (1.1.0)
+    wip-cli (1.2.0)
       thor (~> 1.0)
 
 GEM
@@ -35,4 +35,4 @@ DEPENDENCIES
   wip-cli!
 
 BUNDLED WITH
-   2.1.1
+   2.1.4

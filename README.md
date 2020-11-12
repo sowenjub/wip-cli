@@ -24,9 +24,13 @@ Define an ENV var named `WIP_API_KEY` with your [api key](https://wip.co/api).
 
 ### Adding a todo & completing it
 
-`wip todo "Grab a cup of ☕️"`
-`wip complete 123`
-`wip done "Installed wip-cli gem"`
+* `wip todo "Grab a cup of ☕️"`
+* `wip complete 123`
+* `wip complete -u 123` to uncomplete a todo
+* `wip delete 123`
+
+And to log a completed todo:
+* `wip done "Installed wip-cli gem"`
 
 ### Managing todos
 

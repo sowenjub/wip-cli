@@ -2,8 +2,12 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-11-12
+
 ### Added
 
+- Added options to uncomplete a todo: `wip complete -u 123 `
+- Added command to delete a todo: `wip delete 123`
 - Added command to get any users todos: `wip todos -u sowenjub`
 - Added command to get viewer todos: `wip todos`
 - Added method to get viewer: `Wip::User.viewer`
