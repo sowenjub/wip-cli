@@ -22,11 +22,16 @@ Or install it yourself as:
 
 Define an ENV var named `WIP_API_KEY` with your [api key](https://wip.co/api).
 
+### Adding a todo & completing it
+
 `wip todo "Grab a cup of ☕️"`
-
 `wip complete 123`
-
 `wip done "Installed wip-cli gem"`
+
+### Managing todos
+
+You can list your todos (see `wip help todos` for all the options):
+`wip todos -u sowenjub -f "#nomeattoday" -l 10`
 
 ## Development
 

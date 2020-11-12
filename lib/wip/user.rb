@@ -34,12 +34,12 @@ class Wip::User
     parse client.data("viewer")
   end
 
-  def self.find(id)
+  def self.find(id = nil, username: nil, todos: {})
     client = Wip::Client.new
-
+    find_by = id.nil? ? "username: \"#{username}\"" : "id: #{id}"
     find_query = %{
       {
-        user(id: #{id}) {#{default_selection}}
+        user(#{find_by}) {#{default_selection(todos: todos)}}
       }
     }
     client.request find_query

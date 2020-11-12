@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added command to get any users todos: `wip todos -u sowenjub`
 - Added command to get viewer todos: `wip todos`
 - Added method to get viewer: `Wip::User.viewer`
 
