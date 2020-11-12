@@ -3,15 +3,19 @@ require "wip"
 require "wip/client"
 
 class Wip::Todo
-  attr_accessor :id, :body, :completed_at
+
+  ATTRIBUTES = %i(id body completed_at)
+
+  attr_accessor *ATTRIBUTES
   attr_reader :client
 
+  def self.collection_query(**args)
+    conditions = Wip::GraphqlHelper.query_conditions(**args)
+    %{ todos#{conditions} { #{default_selection} } }
+  end
+
   def self.default_selection
-    %{
-      id
-      body
-      completed_at
-    }
+    ATTRIBUTES.join("\n ")
   end
 
   def self.find(id)

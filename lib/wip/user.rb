@@ -5,7 +5,8 @@ require "wip/client"
 class Wip::User
   attr_accessor :avatar_url, :best_streak, :completed_todos_count, :first_name, :id, :last_name, :streak, :streaking, :time_zone, :url, :username, :todos
 
-  def self.default_selection
+  def self.default_selection(todos: {})
+    todos_selection = Wip::Todo.collection_query(**todos)
     %{
       avatar_url
       best_streak
@@ -16,17 +17,17 @@ class Wip::User
       streak
       streaking
       time_zone
-      todos {#{Wip::Todo.default_selection}}
+      #{todos_selection}
       url
       username
     }
   end
 
-  def self.viewer
+  def self.viewer(todos: {})
     client = Wip::Client.new
     find_query = %{
       {
-        viewer {#{default_selection}}
+        viewer {#{default_selection(todos: todos)}}
       }
     }
     client.request find_query

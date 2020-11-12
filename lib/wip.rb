@@ -1,3 +1,4 @@
+require "wip/helpers/graphql_helper"
 require "wip/todo"
 require "wip/user"
 require "wip/version"

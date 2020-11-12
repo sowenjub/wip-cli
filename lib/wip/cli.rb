@@ -25,8 +25,12 @@ class Wip::CLI < Thor
   end
 
   desc "todos", "List viewer todos"
+  method_option :completed, type: :boolean, aliases: '-c', default: nil
+  method_option :filter, type: :string, aliases: '-f', default: nil
+  method_option :limit, type: :numeric, aliases: '-l', default: 5
+  method_option :order, type: :string, aliases: '-o', default: "completed_at:desc"
   def todos
-    user = Wip::User.viewer
+    user = Wip::User.viewer(todos: options.slice("completed", "filter", "limit", "order"))
     user.todos.each do |todo|
       puts todo.description
     end
