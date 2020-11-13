@@ -4,7 +4,7 @@ require "wip/client"
 
 class Wip::Todo
 
-  ATTRIBUTES = %i(id body completed_at)
+  ATTRIBUTES = %i(id body completed_at created_at)
 
   attr_accessor *ATTRIBUTES
   attr_accessor :deleted
@@ -37,7 +37,8 @@ class Wip::Todo
   def self.parse(data)
     todo_id = data["id"].to_i
     completed_at = DateTime.parse(data["completed_at"]) unless data["completed_at"].nil?
-    new id: todo_id, body: data["body"], completed_at: completed_at
+    created_at = DateTime.parse(data["created_at"]) unless data["created_at"].nil?
+    new id: todo_id, body: data["body"], completed_at: completed_at, created_at: created_at
   end
 
   def self.complete(id)
@@ -59,10 +60,11 @@ class Wip::Todo
   end
 
 
-  def initialize(id: nil, body: nil, completed_at: nil)
+  def initialize(id: nil, body: nil, completed_at: nil, created_at: nil)
     @id = id
     @body = body
     @completed_at = completed_at
+    @created_at = created_at
   end
 
 
@@ -116,6 +118,7 @@ class Wip::Todo
             id
             body
             completed_at
+            created_at
           }
         }
       }
@@ -136,6 +139,7 @@ class Wip::Todo
             id
             body
             completed_at
+            created_at
           }
         }
       }
@@ -148,6 +152,7 @@ class Wip::Todo
             id
             body
             completed_at
+            created_at
           }
         }
       }

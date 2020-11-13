@@ -76,4 +76,23 @@ class Wip::User
       end
     end
   end
+
+  def name
+    [first_name, last_name].join(" ")
+  end
+
+  def tz
+    TZInfo::Timezone.get(time_zone)
+  end
+
+  def streak_icon
+    case streak
+    when 0
+      "⛱"
+    when 1..99
+      "🔥"
+    else
+      "🌶"
+    end
+  end
 end

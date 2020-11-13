@@ -1,5 +1,6 @@
 require "date"
 require "thor"
+require "tzinfo"
 require "wip"
 require "wip/todo"
 
@@ -25,6 +26,11 @@ class Wip::CLI < Thor
     puts todo.description
   end
 
+  desc "me", "Outputs your profile summary"
+  def me
+    print_user_profile Wip::User.viewer
+  end
+
   desc "todo [BODY]", "Create a new todo"
   def todo(body)
     todo = Wip::Todo.create(body: body)
@@ -44,4 +50,29 @@ class Wip::CLI < Thor
       puts todo.description
     end
   end
+
+  desc "user [ID] or [USERNAME]", "Outputs a profile summary"
+  def user(identifier)
+    user = identifier.to_i > 0 ? Wip::User.find(identifier.to_i) : Wip::User.find(username: identifier)
+    print_user_profile user
+  end
+
+  no_commands{
+    def print_user_profile(user)
+      puts "👤 #{user.name}, aka @#{user.username} (User #{user.id})"
+      puts "🌍 Lives in #{user.time_zone} where it currently is #{user.tz.to_local(Time.now).strftime("%H:%M")}"
+      puts "✅ #{user.completed_todos_count} completed todos"
+      if user.streaking
+        puts "#{user.streak_icon} On a streak of #{user.streak}"
+      else
+        last_todo = user.todos.first
+        if last_todo.nil?
+          puts "#{user.streak_icon} No todo"
+        else
+          puts "#{user.streak_icon} Last todo created @ #{last_todo.created_at}"
+        end
+      end
+      puts "🔗 #{user.url}"
+    end
+  }
 end
