@@ -7,6 +7,10 @@
 - Added shortcut command to get your profile: `wip me`
 - Added command to get a user profile: `wip user 2051` or `wip user sowenjub`
 
+### Changed
+
+- Removed # before todo ids for easier copy/paste
+
 ## [1.2.0] - 2020-11-12
 
 ### Added

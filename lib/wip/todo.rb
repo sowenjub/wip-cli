@@ -73,7 +73,7 @@ class Wip::Todo
   end
 
   def description
-    [icon, body, "##{id}"].join " "
+    [icon, body, "- #{id}"].join " "
   end
 
   def done?
