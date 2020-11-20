@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', "~> 3.9"
 
   spec.add_runtime_dependency "thor", "~> 1.0"
+  spec.add_runtime_dependency "tty-prompt", "~> 0.22"
 end

@@ -1,8 +1,10 @@
 require "date"
 require "thor"
+require "tty-prompt"
 require "tzinfo"
 require "wip"
 require "wip/todo"
+require "byebug"
 
 class Wip::CLI < Thor
   class_option :verbose, :type => :boolean, :aliases => "-v"
@@ -38,16 +40,30 @@ class Wip::CLI < Thor
   end
 
   desc "todos", "List viewer todos"
-  method_option :completed, type: :boolean, aliases: '-c'
+  method_option :completed, type: :boolean, aliases: '-c', desc: "Filter by status"
   method_option :filter, type: :string, aliases: '-f'
+  method_option :interactive, type: :boolean, aliases: '-i', default: false, desc: "Toggle todos statuses by selecting them"
   method_option :limit, type: :numeric, aliases: '-l', default: 5
-  method_option :order, type: :string, aliases: '-o', default: "completed_at:desc"
+  method_option :order, type: :string, aliases: '-o', default: "created_at:desc"
   method_option :username, type: :string, aliases: '-u'
   def todos
     todos_options = options.slice("completed", "filter", "limit", "order")
     user = options.username.nil? ? Wip::User.viewer(todos: todos_options) : Wip::User.find(username: options.username, todos: todos_options)
-    user.todos.each do |todo|
-      puts todo.description
+    if options.interactive
+      prompt = TTY::Prompt.new
+      options = user.todos.inject({}) do |h, todo|
+        h[todo.description] = todo.id
+        h
+      end
+      choice = prompt.multi_select("Toggle todos?", options, per_page: todos_options["limit"])
+      puts "No change" if choice.empty?
+      choice.each do |todo_id|
+        todo = user.todos.find { |todo| todo.id == todo_id }
+        todo.toggle
+        puts todo.description
+      end
+    else
+      user.todos.each { |todo| puts todo.description }
     end
   end
 

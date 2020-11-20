@@ -2,10 +2,18 @@
 
 ## [Unreleased]
 
+## [1.4.0] - 2020-11-20
+
 ### Added
 
-- Added shortcut command to get your profile: `wip me`
-- Added command to get a user profile: `wip user 2051` or `wip user sowenjub`
+- Interactive mode to toggle todos: `wip todos -i`
+
+## [1.3.0] - 2020-11-13
+
+### Added
+
+- Shortcut command to get your profile: `wip me`
+- Command to get a user profile: `wip user 2051` or `wip user sowenjub`
 
 ### Changed
 
@@ -15,11 +23,11 @@
 
 ### Added
 
-- Added options to uncomplete a todo: `wip complete -u 123 `
-- Added command to delete a todo: `wip delete 123`
-- Added command to get any users todos: `wip todos -u sowenjub`
-- Added command to get viewer todos: `wip todos`
-- Added method to get viewer: `Wip::User.viewer`
+- Options to uncomplete a todo: `wip complete -u 123 `
+- Command to delete a todo: `wip delete 123`
+- Command to get any users todos: `wip todos -u sowenjub`
+- Command to get viewer todos: `wip todos`
+- Method to get viewer: `Wip::User.viewer`
 
 ## [1.1.0] - 2020-11-11
 

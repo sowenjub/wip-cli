@@ -98,6 +98,10 @@ class Wip::Todo
     end
   end
 
+  def toggle
+    done? ? uncomplete : complete
+  end
+
   def save
     client.request create_query
     client.data("createTodo").tap do |params|
