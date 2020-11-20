@@ -3,4 +3,9 @@
 require "wip"
 require "wip/cli"
 
+if ARGV[0] == "--version"
+  puts Wip::VERSION
+  exit
+end
+
 Wip::CLI.start(ARGV)
