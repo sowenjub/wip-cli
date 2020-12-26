@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wip-cli (1.4.0)
+    wip-cli (1.4.1)
       thor (~> 1.0)
       tty-prompt (~> 0.22)
 

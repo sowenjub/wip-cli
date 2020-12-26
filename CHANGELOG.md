@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.4.1] - 2020-12-26
+
+### Fixed
+
+- Display proper last done date with `wip me`
+
 ## [1.4.0] - 2020-11-20
 
 ### Added
