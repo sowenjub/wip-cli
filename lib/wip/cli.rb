@@ -30,7 +30,7 @@ class Wip::CLI < Thor
 
   desc "me", "Outputs your profile summary"
   def me
-    print_user_profile Wip::User.viewer
+    print_user_profile Wip::User.viewer(todos: { "order" => "created_at:desc" })
   end
 
   desc "todo [BODY]", "Create a new todo"
@@ -81,7 +81,7 @@ class Wip::CLI < Thor
       if user.streaking
         puts "#{user.streak_icon} On a streak of #{user.streak}"
       else
-        last_todo = user.todos.first
+        last_todo = user.done_todos.first
         if last_todo.nil?
           puts "#{user.streak_icon} No todo"
         else

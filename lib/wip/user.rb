@@ -95,4 +95,8 @@ class Wip::User
       "🌶"
     end
   end
+
+  def done_todos
+    todos.filter(&:done?)
+  end
 end
