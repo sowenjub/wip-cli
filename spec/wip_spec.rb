@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Wip do
   it "has a version number" do
     expect(Wip::VERSION).not_to be nil

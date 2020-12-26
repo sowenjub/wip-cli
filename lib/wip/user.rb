@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "date"
 require "wip"
 require "wip/client"
@@ -65,12 +67,12 @@ class Wip::User
     new.tap do |user|
       data.each do |key, raw_value|
         value = case key
-        when "id"
-          raw_value.to_i
-        when "todos"
-          raw_value.collect { |v| Wip::Todo.parse v }
-        else
-          raw_value
+                when "id"
+                  raw_value.to_i
+                when "todos"
+                  raw_value.collect { |v| Wip::Todo.parse v }
+                else
+                  raw_value
         end
         user.send("#{key}=", value)
       end

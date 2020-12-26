@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 require "date"
 require "wip"
 require "wip/client"
 
 class Wip::Todo
-
   ATTRIBUTES = %i(id body completed_at created_at)
 
-  attr_accessor *ATTRIBUTES
+  attr_accessor(*ATTRIBUTES)
   attr_accessor :deleted
   attr_reader :client
 
@@ -31,7 +32,7 @@ class Wip::Todo
   end
 
   def self.create(body:, completed_at: nil)
-    new(body: body, completed_at: completed_at).tap &:save
+    new(body: body, completed_at: completed_at).tap(&:save)
   end
 
   def self.parse(data)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "wip/helpers/graphql_helper"
 require "wip/todo"
 require "wip/user"
